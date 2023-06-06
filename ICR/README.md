@@ -2,11 +2,16 @@
 
 ## TODO list
 * ✅ Run and train ***TabPFN*** model **-->** *Increased* LB position and *decreased* log_loss in during training
+* ⏺ feature engeneering (log, square, sqrt, plus, minus)
 * 🟦 Calculate and research cosine or different distances between objects
-* 🟦 Add to features distance feature (cosine, Euclidean etc)
+* 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
+* 🟦 add time (Epsilon) to train dataset, for test dataset use time + 1 value, analyze Epsilon feature
 * 🟦 Add post-processing based on additional target data
 * 🟦 Split binary prediction into multi-label
 * 🟦 Balance class samples (undersampling, post-processing, SMOTE)
+* ✅ data leakage exploit
+* 🟦 what type of imputation must be used? median/mean imputing of KNN-imputing? is NaNs are zero?
+* 🟦 Ensemble TabPFNs with different number of ensembles in settings
 
 
 ✅ - Done <br>

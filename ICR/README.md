@@ -6,7 +6,8 @@
 * 🟦 Add to features distance feature (cosine, Euclidean etc)
 * 🟦 Add post-processing based on additional target data
 * 🟦 Split binary prediction into multi-label
-* 🟦 Balance class samples (undersampling, post-processing)
+* 🟦 Balance class samples (undersampling, post-processing, SMOTE)
+
 
 ✅ - Done <br>
 🟦 - Planning <br>
@@ -16,14 +17,11 @@
 ⚠️ - Check it out <br>
 
 ## Ideas
-1. Write
-2. here
-3. your
-4. ideas
+* 🟦 Yo Daug I've heard you like boosting, so let's predict with TabPFN/KNN and boost it's errors with boosting
 
 ## Experiments
 * Simple *LGBM* with no fine-tuning: **LB 0.44**
-* Fine-tined *LGBM* by AutoML: **LB 0.31**
+* Fine-tuned *LGBM* by AutoML: **LB 0.31**
 * *TabPFN*: **LB: 0.26** 
 
 ## Resources:

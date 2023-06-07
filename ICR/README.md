@@ -2,16 +2,19 @@
 
 ## TODO list
 * ✅ Run and train ***TabPFN*** model **-->** *Increased* LB position and *decreased* log_loss in during training
-* ⏺ feature engeneering (log, square, sqrt, plus, minus)
-* 🟦 Calculate and research cosine or different distances between objects
+* 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increased
+* ⏺ Feature engineering (log, square, sqrt, plus, minus)
+* 🟦 Add mean distance (cosine, Manhattan, Euclidean etc) to N nearest neighbours for each class
 * 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
-* 🟦 add time (Epsilon) to train dataset, for test dataset use time + 1 value, analyze Epsilon feature
-* 🟦 Add post-processing based on additional target data
+* 🟦 analyze time (Epsilon) feature
+* 🟦 Add time (Epsilon) to train/test dataset, encode it as ordinal. For the test dataset use max(time) + 1 value 
+* 🟦 Add post-processing based on additional target data (e.g. use threshold: if target <= threshold: target = 0 else 1)
 * 🟦 Split binary prediction into multi-label
 * 🟦 Balance class samples (undersampling, post-processing, SMOTE)
-* ✅ data leakage exploit
-* 🟦 what type of imputation must be used? median/mean imputing of KNN-imputing? is NaNs are zero?
+* ✅ Data leakage exploit
+* 🟦 What type of imputation must be used? median/mean imputing of KNN-imputing? is NaNs are zero? or don't use at all?
 * 🟦 Ensemble TabPFNs with different number of ensembles in settings
+* 🟦 Ensemble TabPFN with LGBM and CatBoost
 
 
 ✅ - Done <br>
@@ -33,3 +36,4 @@
 * https://arxiv.org/abs/2207.01848
 * https://arxiv.org/abs/2211.02941
 * https://github.com/automl/TabPFN
+

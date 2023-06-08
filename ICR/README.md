@@ -23,11 +23,16 @@
 
 ## Ideas
 * 🟦 Yo Daug I've heard you like boosting, so let's predict with TabPFN/KNN and boost it's errors with boosting
+* 🟦 Denoising:
+      for f in features:
+         train_df[f] = np.floor(train_df[f]*100)/100 # if noise confuses model this trick helps to delete it 
+      Slightly improves CV for LGBM with ratio 1000
 
 ## Experiments
 * Simple *LGBM* with no fine-tuning: **LB 0.44**
 * Fine-tuned *LGBM* by AutoML: **LB 0.31**
 * *TabPFN*: **LB: 0.26** 
+* Fine-tuned *LGBM* + Nested CV: **LB: 0.17** 
 
 ## Resources:
 * https://arxiv.org/abs/2207.01848

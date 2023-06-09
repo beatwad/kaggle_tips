@@ -30,8 +30,12 @@
 * 🟦 Yo Daug I've heard you like boosting, so let's predict with TabPFN/KNN and boost it's errors with boosting
 * 🟦 Denoising:
       for f in features:
-         train_df[f] = np.floor(train_df[f]*100)/100 # if noise confuses model this trick helps to delete it 
+         train_df[f] = np.floor(train_df[f]*100)/100 # if noise confuses model this trick helps to delete it, doesn't work for LGBM
       Slightly improves CV for LGBM with ratio 1000
+* 🟦 Log:
+      for f in features:
+         train_df[f] = np.sign(train_df[f]) * np.log1p(np.abs(train_df[f])) # doesn't work for LGBM, maybe will work for NNs
+      Slightly improves CV for LGBM with ratio 1000 
 * 🟦 Post-processing: DO NOT use code like test[test['class_0'] < 0.13] = 0 or test[test['class_0'] > 0.87] = 1. 
      One false classified object gives an error = -log(1e-15) = 34.53 => log-loss increases dramtically! So if use
      post-processing, use test[test['class_0'] < 0.13] = 0.1/0.01 or test[test['class_0'] > 0.87] = 0.9/0.99

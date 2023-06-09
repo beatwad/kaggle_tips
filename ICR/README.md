@@ -49,6 +49,7 @@
 * 🟦 Check Greedy Bin from this solution: https://github.com/jxzly/Kaggle-American-Express-Default-Prediction-1st-solution
 * 🟦 Second place in the similar competition: https://www.kaggle.com/competitions/amex-default-prediction/discussion/347637
 * 🟦 Third place in the similar competition: https://www.kaggle.com/competitions/amex-default-prediction/discussion/349741
+* 🟦 More winning solutions in the another similar competition here: https://www.kaggle.com/competitions/icr-identify-age-related-conditions/discussion/409596
 * 🟦 Can try to deanonimise feachers with this: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5938178/
 
 

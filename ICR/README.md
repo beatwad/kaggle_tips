@@ -7,12 +7,13 @@
 * ✅ Analyze time features
 * 🟦 What type of imputation must be used? median/mean/0/-999 imputing or KNN-imputing? is NaNs are zero? or don't use at all?
 * 🟦 Encode Epsilon as ordinal, encode test as max(Epsilon) + 1
-* 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increased
-* ⏺ Feature engineering (log, square, sqrt, plus, minus)
 * 🟦 Should we delete objects with outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
 * 🟦 Analyze features with high correlation, should we drop some of them?
 * 🟦 Add mean distance (cosine, Manhattan, Euclidean etc) to N nearest neighbours for each class, increase confidence of prediction if there are a lot of close objects of the same class
       for object class if that object has a lot of Nearest Neigbours with the same class
+* 🟦 Ensemble 5-10 optimised with Optuna LGBM and CatBoost models, train all of them on full data
+* ⏺ Feature engineering (log, square, sqrt, plus, minus)
+* 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increased
 * 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
 * 🟦 Add post-processing based on additional target data (look into Ideas)
 * 🟦 Split binary prediction into multi-label

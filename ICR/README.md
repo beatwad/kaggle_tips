@@ -3,20 +3,27 @@
 ## TODO list
 * ✅ Run and train ***TabPFN*** model **-->** *Increased* LB position and *decreased* log_loss in during training
 * ✅ Nested CV
+* ✅ Filter original features (gain importance + permutation importance + BORUTA SHAP)
+* ✅ Analyze time features
+* 🟦 What type of imputation must be used? median/mean/0/-999 imputing or KNN-imputing? is NaNs are zero? or don't use at all?
+* 🟦 Encode Epsilon as ordinal, encode test as max(Epsilon) + 1
 * 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increased
 * ⏺ Feature engineering (log, square, sqrt, plus, minus)
 * 🟦 Should we delete objects with outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
 * 🟦 Analyze features with high correlation, should we drop some of them?
-* 🟦 Add mean distance (cosine, Manhattan, Euclidean etc) to N nearest neighbours for each class, increase confidence
+* 🟦 Add mean distance (cosine, Manhattan, Euclidean etc) to N nearest neighbours for each class, increase confidence of prediction if there are a lot of close objects of the same class
       for object class if that object has a lot of Nearest Neigbours with the same class
 * 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
 * 🟦 Add post-processing based on additional target data (look into Ideas)
 * 🟦 Split binary prediction into multi-label
 * 🟦 Balance class samples (undersampling, post-processing, SMOTE)
 * ✅ Data leakage exploit
-* 🟦 What type of imputation must be used? median/mean imputing of KNN-imputing? is NaNs are zero? or don't use at all?
 * 🟦 Ensemble TabPFNs with different number of ensembles in settings
 * 🟦 Ensemble TabPFN with LGBM and CatBoost and KNN
+* 🟦 PCA
+* 🟦 Clip features with the outliers
+* 🟦 Try early stopping
+* 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
 
 
 ✅ - Done <br>
@@ -40,6 +47,9 @@
      One false classified object gives an error = -log(1e-15) = 34.53 => log-loss increases dramtically! So if use
      post-processing, use test[test['class_0'] < 0.13] = 0.1/0.01 or test[test['class_0'] > 0.87] = 0.9/0.99
 * 🟦 Check Greedy Bin from this solution: https://github.com/jxzly/Kaggle-American-Express-Default-Prediction-1st-solution
+* 🟦 Second place in the similar competition: https://www.kaggle.com/competitions/amex-default-prediction/discussion/347637
+* 🟦 Third place in the similar competition: https://www.kaggle.com/competitions/amex-default-prediction/discussion/349741
+* 🟦 Can try to deanonimise feachers with this: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5938178/
 
 
 ## Experiments

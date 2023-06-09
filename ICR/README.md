@@ -39,6 +39,7 @@
 * 🟦 Post-processing: DO NOT use code like test[test['class_0'] < 0.13] = 0 or test[test['class_0'] > 0.87] = 1. 
      One false classified object gives an error = -log(1e-15) = 34.53 => log-loss increases dramtically! So if use
      post-processing, use test[test['class_0'] < 0.13] = 0.1/0.01 or test[test['class_0'] > 0.87] = 0.9/0.99
+* 🟦 Check Greedy Bin from this solution: https://github.com/jxzly/Kaggle-American-Express-Default-Prediction-1st-solution
 
 
 ## Experiments

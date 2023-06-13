@@ -9,12 +9,13 @@
 * 🟦 Encode Epsilon as ordinal, encode test as max(Epsilon) + 1
 * 🟦 Should we delete objects with outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
 * 🟦 Analyze features with high correlation, should we drop some of them?
-* 🟦 Add mean distance (cosine, Manhattan, Euclidean etc) to N nearest neighbours for each class, increase confidence of prediction if there are a lot of close objects of the same class
+* ⏺ Add mean distance (cosine, Manhattan, Euclidean etc) to N nearest neighbours for each class
+* 🟦 Increase confidence of prediction if there are a lot of close objects of the same class
       for object class if that object has a lot of Nearest Neigbours with the same class
 * 🟦 Clip features with the outliers
 * 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
-* 🟦 Ensemble 5-10 optimised with Optuna LGBM and CatBoost models, train all of them on full data
-* ⏺ Feature engineering (log, square, sqrt, plus, minus)
+* ⏺ Ensemble 5-10 optimised with Optuna LGBM and CatBoost models, train all of them on full data
+* ❌ Feature engineering (log, square, sqrt, plus, minus)
 * 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increased
 * 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
 * 🟦 Add post-processing based on additional target data (look into Ideas)
@@ -24,7 +25,6 @@
 * 🟦 Ensemble TabPFNs with different number of ensembles in settings
 * 🟦 Ensemble TabPFN with LGBM and CatBoost and KNN
 * 🟦 PCA
-* 🟦 Try early stopping
 
 
 

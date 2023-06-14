@@ -8,13 +8,13 @@
 * 🟦 Try KNN-imputing. Or don't use imputation at all?
 * 🟦 Encode Epsilon as ordinal, encode test as max(Epsilon) + 1
 * 🟦 Should we delete objects with outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
-* 🟦 Analyze features with high correlation, should we drop some of them?
-* ⏺ Add mean distance (cosine, Manhattan, Euclidean etc) to N nearest neighbours for each class
-* 🟦 Increase confidence of prediction if there are a lot of close objects of the same class
-      for object class if that object has a lot of Nearest Neigbours with the same class
-* 🟦 Clip features with the outliers
+* 🟦 Check RandomUnderSampling
+* 🟦 Delete objects on which models make mistakes
+* ✅ Analyze features with high correlation, should we drop some of them?
+* ⏺ Cosine class distance works, need to make submission with it
+* ⏺ Clip features with the outliers, need to make submission with them and without them
+* ⏺ Ensemble 5-10 optimised with Optuna LGBM, CatBoost and XGBoost models, train all of them on 10-20 Fold data
 * 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
-* ⏺ Ensemble 5-10 optimised with Optuna LGBM and CatBoost models, train all of them on full data
 * ❌ Feature engineering (log, square, sqrt, plus, minus)
 * 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increased
 * 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
@@ -23,7 +23,7 @@
 * 🟦 Balance class samples (undersampling, post-processing, SMOTE)
 * ✅ Data leakage exploit
 * 🟦 Ensemble TabPFNs with different number of ensembles in settings
-* 🟦 Ensemble TabPFN with LGBM and CatBoost and KNN
+* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
 * 🟦 PCA
 
 
@@ -59,7 +59,8 @@
 * Simple *LGBM* with no fine-tuning: **LB 0.44**
 * Fine-tuned *LGBM* by AutoML: **LB 0.31**
 * *TabPFN*: **LB: 0.26** 
-* Fine-tuned *LGBM* + Nested CV: **LB: 0.17** 
+* Fine-tuned *LGBM* + Nested CV: **CV/LB: 0.2/0.17** 
+* Fine-tuned with Optuna 20 *LGBMs* (10 Folds): **CV/LB: 0.166/0.17** 
 
 ## Resources:
 * https://arxiv.org/abs/2207.01848
@@ -67,4 +68,5 @@
 * https://github.com/automl/TabPFN
 * https://www.kaggle.com/code/beatwad/dealing-with-very-small-datasets/edit
 * https://sebastianraschka.com/blog/2022/deep-learning-for-tabular-data.html
+
 

@@ -8,7 +8,7 @@
 * 🟦 Try KNN-imputing. Or don't use imputation at all?
 * 🟦 Encode Epsilon as ordinal, encode test as max(Epsilon) + 1
 * ✅ Should we delete objects with the outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
-* ✅ Check RandomUnderSampling
+* ⏺ Check RandomUnderSampling
 * 🟦 Delete objects on which models make mistakes
 * ✅ Analyze features with high correlation, should we drop some of them?
 * ⏺ Cosine class distance works, need to make submission with it
@@ -26,7 +26,7 @@
 * 🟦 Ensemble TabPFNs with different number of ensembles in settings
 * 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
 * 🟦 PCA
-* 🟦 Try DART optimization for XGBoost
+* ❌ Try DART optimization for XGBoost (too slow)
 
 
 

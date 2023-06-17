@@ -5,26 +5,28 @@
 * ✅ Nested CV
 * ✅ Filter original features (gain importance + permutation importance + BORUTA SHAP)
 * ✅ Analyze time features
-* 🟦 Try KNN-imputing. Or don't use imputation at all?
-* 🟦 Encode Epsilon as ordinal, encode test as max(Epsilon) + 1
 * ✅ Should we delete objects with the outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
-* ⏺ Check RandomUnderSampling
+* ❌ Check RandomUnderSampling - doesn't work, makes only worse
+* ⏺ Encode Epsilon as ordinal, encode test as max(Epsilon) + 1
+* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
+* 🟦 Try to set different class weights (one with less ratio, another one with bigger) for any GBM model, and check if score is changed. If it is - we can fit our models to this class distribution. 
+* 🟦 Try KNN-imputing. Or don't use imputation at all?
+* 🟦 Check train/test split instead of K-Fold
 * 🟦 Delete objects on which models make mistakes
+* 🟦 Ensemble TabPFNs with different number of ensembles in settings
 * ✅ Analyze features with high correlation, should we drop some of them?
 * ⏺ Cosine class distance works, need to make submission with it
 * ⏺ Clip features with the outliers, need to make submission with them and without them
 * ⏺ Ensemble 5-10 optimised with Optuna LGBM, CatBoost and XGBoost models, train all of them on 10-20 Fold data
-* 🟦 Try to set different class weights (one with less ratio, another one with bigger) for any GBM model, and check if score is changed. If it is - we can fit our models to this class distribution. 
 * 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
-* ❌⏺ Feature engineering (log, square, sqrt, plus, minus) - doesn't work for the original dataset, maybe will work for balanced
+* ❌ Feature engineering (log, square, sqrt, plus, minus) - doesn't work
 * 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increased
 * 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
 * 🟦 Add post-processing based on additional target data (look into Ideas)
 * ❌ Split binary prediction into multi-label (to little data)
 * ✅ Balance class samples (undersampling, post-processing, SMOTE)
 * ✅ Data leakage exploit
-* 🟦 Ensemble TabPFNs with different number of ensembles in settings
-* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
+
 * 🟦 PCA
 * ❌ Try DART optimization for XGBoost (too slow)
 

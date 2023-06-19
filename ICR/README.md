@@ -10,18 +10,20 @@
 * ✅ Should we delete objects with the outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
 * ✅ Ensemble 5-10 optimised with Optuna LGBM, CatBoost and XGBoost models, train all of them on 10-20 Fold data
 * ✅ Analyze features with high correlation, should we drop some of them?
-* ⏺ Encode Epsilon as ordinal, encode test as max(Epsilon) + 1
+* 🟦 Try to set different class weights (one with less ratio, another one with bigger) for any GBM model, and check if score is changed. If it is - we can fit our models to this class distribution
 * ⏺ Clip features with the outliers, need to make submission with them and without them
-* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
-* 🟦 Try to set different class weights (one with less ratio, another one with bigger) for any GBM model, and check if score is changed. If it is - we can fit our models to this class distribution. 
-* 🟦 Try KNN-imputing. Or don't use imputation at all?
 * 🟦 Delete objects on which models make mistakes
+* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
+
+* 🟦 Try KNN-imputing. Or don't use imputation at all?
 * 🟦 Ensemble TabPFNs with different number of ensembles in settings
 * 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
-* 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increased
+* 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
 * 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
 * 🟦 Add post-processing based on additional target data (look into Ideas)
 * 🟦 Try PCA
+* 🟦 Use DNN with Greedy Bin from this solution: https://github.com/jxzly/Kaggle-American-Express-Default-Prediction-1st-solution
+* ❌ Encode Epsilon as ordinal, encode test as max(Epsilon) + 1 - doesn't work, LB score gets significantly worse
 * ❌ Try DART optimization for XGBoost (too slow)
 * ❌ Split binary prediction into multi-label (to little data)
 * ❌ Cosine class distance and another distance metrics make CV worse
@@ -50,8 +52,7 @@
 * 🟦 Post-processing: DO NOT use code like test[test['class_0'] < 0.13] = 0 or test[test['class_0'] > 0.87] = 1. 
      One false classified object gives an error = -log(1e-15) = 34.53 => log-loss increases dramtically! So if use
      post-processing, use test[test['class_0'] < 0.13] = 0.1/0.01 or test[test['class_0'] > 0.87] = 0.9/0.99
-* 🟦 Check Greedy Bin from this solution: https://github.com/jxzly/Kaggle-American-Express-Default-Prediction-1st-solution
-* 🟦 Second place in the similar competition: https://www.kaggle.com/competitions/amex-default-prediction/discussion/347637
+
 * 🟦 Third place in the similar competition: https://www.kaggle.com/competitions/amex-default-prediction/discussion/349741
 * 🟦 More winning solutions in the another similar competition here: https://www.kaggle.com/competitions/icr-identify-age-related-conditions/discussion/409596
 

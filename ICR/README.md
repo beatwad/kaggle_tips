@@ -10,18 +10,17 @@
 * ✅ Should we delete objects with the outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
 * ✅ Ensemble 5-10 optimised with Optuna LGBM, CatBoost and XGBoost models, train all of them on 10-20 Fold data
 * ✅ Analyze features with high correlation, should we drop some of them?
+* ⏺ Try different number of folds
+* 🟦 Delete objects on which models make mistakes - CV improves significantly
 * 🟦 Try to set different class weights (one with less ratio, another one with bigger) for any GBM model, and check if score is changed. If it is - we can fit our models to this class distribution
-* ⏺ Clip features with the outliers, need to make submission with them and without them
-* 🟦 Delete objects on which models make mistakes
-* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
-
 * 🟦 Try KNN-imputing. Or don't use imputation at all?
+* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
+* 🟦 Try to add optimized CatBoost
+
 * 🟦 Ensemble TabPFNs with different number of ensembles in settings
 * 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
 * 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
-* 🟦 Add similarity approach with distance features (cosine, Manhattan, Euclidean etc)
 * 🟦 Add post-processing based on additional target data (look into Ideas)
-* 🟦 Try PCA
 * 🟦 Use DNN with Greedy Bin from this solution: https://github.com/jxzly/Kaggle-American-Express-Default-Prediction-1st-solution
 * ❌ Encode Epsilon as ordinal, encode test as max(Epsilon) + 1 - doesn't work, LB score gets significantly worse
 * ❌ Try DART optimization for XGBoost (too slow)
@@ -29,6 +28,9 @@
 * ❌ Cosine class distance and another distance metrics make CV worse
 * ❌ Check RandomUnderSampling - doesn't work, makes only worse
 * ❌ Feature engineering (log, square, sqrt, plus, minus) - doesn't work
+
+* 🟦 Try different number of models
+* 🟦 Make submission without clipping outliers
 
 
 

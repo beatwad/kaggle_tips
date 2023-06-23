@@ -1,4 +1,5 @@
 # ICR Kaggle Competition
+Each version of model must be tagged with v.A.B.C.D system version: A - feature ver., B - model ver,. C - validation ver, D - inference ver.
 
 ## TODO list
 * ✅ Run and train ***TabPFN*** model **-->** *Increased* LB position and *decreased* log_loss in during training
@@ -10,28 +11,31 @@
 * ✅ Should we delete objects with the outliers? Or cap the outliers values? (Use IsolationForest to detect outliers)
 * ✅ Ensemble 5-10 optimised with Optuna LGBM, CatBoost and XGBoost models, train all of them on 10-20 Fold data
 * ✅ Analyze features with high correlation, should we drop some of them?
-* ⏺ Try different number of folds
-* 🟦 Delete objects on which models make mistakes - CV improves significantly
-* 🟦 Try to set different class weights (one with less ratio, another one with bigger) for any GBM model, and check if score is changed. If it is - we can fit our models to this class distribution
-* 🟦 Try KNN-imputing. Or don't use imputation at all?
-* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost and KNN
-* 🟦 Try to add optimized CatBoost
-
-* 🟦 Ensemble TabPFNs with different number of ensembles in settings
-* 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
+* ✅ Encode Epsilon as ordinal, encode test as max(Epsilon) + 1 - doesn't work, LB score gets significantly worse
+* ✅ Try RandomUnderSampling - doesn't work, makes only worse
+* ✅ Feature engineering (log, square, sqrt, plus, minus) - doesn't work
+* ✅ Delete objects on which models make mistakes - CV improves significantly, LB - decreases
+* ✅ Try to drop DA - CV improves, LB slightly decreases
+* ✅ Train each model on individual KFold split
+* ✅ Ensemble TabPFNs with different number of ensembles in settings - doesn't work
+* ⏺ Try different number of folds; 11 folds - LB slightly decreases
+* ⏺ Try different number of models
+* ⏺ Try RandomOverSampling from the same imblearn library
+* ⏺ Try different number of models
 * 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
+
+* 🟦 Make submission without clipping outliers
+* 🟦 Try to set different class weights on inference, and check if score is changed. If it is - we can fit our models to this class distribution
+* 🟦 Try KNN-imputing. Or don't use imputation at all?
+* 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost, KNN, LinReg and AutoGluon
+* 🟦 Add DNN, optimize it's architechture
+* 🟦 Add TabNet
+
+* 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
 * 🟦 Add post-processing based on additional target data (look into Ideas)
 * 🟦 Use DNN with Greedy Bin from this solution: https://github.com/jxzly/Kaggle-American-Express-Default-Prediction-1st-solution
-* ❌ Encode Epsilon as ordinal, encode test as max(Epsilon) + 1 - doesn't work, LB score gets significantly worse
 * ❌ Try DART optimization for XGBoost (too slow)
 * ❌ Split binary prediction into multi-label (to little data)
-* ❌ Cosine class distance and another distance metrics make CV worse
-* ❌ Check RandomUnderSampling - doesn't work, makes only worse
-* ❌ Feature engineering (log, square, sqrt, plus, minus) - doesn't work
-
-* 🟦 Try different number of models
-* 🟦 Make submission without clipping outliers
-
 
 
 ✅ - Done <br>
@@ -65,6 +69,8 @@
 * *TabPFN*: **LB: 0.26** 
 * Fine-tuned *LGBM* + Nested CV: **CV/LB: 0.2/0.17** 
 * Fine-tuned with Optuna 20 *LGBM* + *XGBoost* + *CatBoost* + Stacking (10 Folds): **CV/LB: 0.158/0.17** 
+* Fine-tuned *LGBM* 20 models avg + Feature selection: **CV/LB: 0.166/0.17** 
+* Fine-tuned *LGBM* 20 models avg + Feature selection (also drop DA): **CV/LB: 0.163/0.18** 
 
 ## Resources:
 * https://arxiv.org/abs/2207.01848

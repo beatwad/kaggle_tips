@@ -18,24 +18,25 @@ Each version of model must be tagged with v.A.B.C.D system version: A - feature 
 * ✅ Try to drop DA - CV improves, LB slightly decreases
 * ✅ Train each model on individual KFold split
 * ✅ Ensemble TabPFNs with different number of ensembles in settings - doesn't work
-* ⏺ Try different number of folds; 11 folds - LB slightly decreases
+* ⏺ Real class balance on the LB seems to be 1:3, use it in your model
+* ⏺ Try to do different RandomUnderSample for every model
+* ⏺ Try to find out LB feature distribution
+* ⏺ Try different number of folds; 11 folds - LB slightly decreases, 15 folds - LB increases
 * ⏺ Try different number of models
 * ⏺ Try RandomOverSampling from the same imblearn library
-* ⏺ Try different number of models
-* 🟦 TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
-
+* ⏺ TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
+* 🟦 Delete outliers using AdjustedScaler from adjdatatools
 * 🟦 Make submission without clipping outliers
 * 🟦 Try to set different class weights on inference, and check if score is changed. If it is - we can fit our models to this class distribution
 * 🟦 Try KNN-imputing. Or don't use imputation at all?
 * 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost, KNN, LinReg and AutoGluon
 * 🟦 Add DNN, optimize it's architechture
 * 🟦 Add TabNet
-
+* 🟦 Try multi-label classification
+* 🟦 Try regularization for LogReg
 * 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
 * 🟦 Add post-processing based on additional target data (look into Ideas)
-* 🟦 Use DNN with Greedy Bin from this solution: https://github.com/jxzly/Kaggle-American-Express-Default-Prediction-1st-solution
 * ❌ Try DART optimization for XGBoost (too slow)
-* ❌ Split binary prediction into multi-label (to little data)
 
 
 ✅ - Done <br>
@@ -58,9 +59,6 @@ Each version of model must be tagged with v.A.B.C.D system version: A - feature 
 * 🟦 Post-processing: DO NOT use code like test[test['class_0'] < 0.13] = 0 or test[test['class_0'] > 0.87] = 1. 
      One false classified object gives an error = -log(1e-15) = 34.53 => log-loss increases dramtically! So if use
      post-processing, use test[test['class_0'] < 0.13] = 0.1/0.01 or test[test['class_0'] > 0.87] = 0.9/0.99
-
-* 🟦 Third place in the similar competition: https://www.kaggle.com/competitions/amex-default-prediction/discussion/349741
-* 🟦 More winning solutions in the another similar competition here: https://www.kaggle.com/competitions/icr-identify-age-related-conditions/discussion/409596
 
 
 ## Experiments

@@ -18,13 +18,13 @@ Each version of model must be tagged with v.A.B.C.D system version: A - feature 
 * ✅ Try to drop DA - CV improves, LB slightly decreases
 * ✅ Train each model on individual KFold split
 * ✅ Ensemble TabPFNs with different number of ensembles in settings - doesn't work
+* ✅ Try to do different RandomUnderSample for every model
+* ✅ TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
 * ⏺ Real class balance on the LB seems to be 1:3, use it in your model
-* ⏺ Try to do different RandomUnderSample for every model
 * ⏺ Try to find out LB feature distribution
 * ⏺ Try different number of folds; 11 folds - LB slightly decreases, 15 folds - LB increases
 * ⏺ Try different number of models
 * ⏺ Try RandomOverSampling from the same imblearn library
-* ⏺ TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
 * 🟦 Delete outliers using AdjustedScaler from adjdatatools
 * 🟦 Make submission without clipping outliers
 * 🟦 Try to set different class weights on inference, and check if score is changed. If it is - we can fit our models to this class distribution

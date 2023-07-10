@@ -20,14 +20,9 @@ Each version of model must be tagged with v.A.B.C.D system version: A - feature 
 * ✅ Ensemble TabPFNs with different number of ensembles in settings - doesn't work
 * ✅ Try to do different RandomUnderSample for every model
 * ✅ TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
-* ⏺ Real class balance on the LB seems to be 1:3, use it in your model
-* ⏺ Try to find out LB feature distribution
-* ⏺ Try different number of folds; 11 folds - LB slightly decreases, 15 folds - LB increases
-* ⏺ Try different number of models
-* ⏺ Try RandomOverSampling from the same imblearn library
-* 🟦 Delete outliers using AdjustedScaler from adjdatatools
-* 🟦 Make submission without clipping outliers
-* 🟦 Try to set different class weights on inference, and check if score is changed. If it is - we can fit our models to this class distribution
+* ✅ Delete outliers using AdjustedScaler from adjdatatools
+* ⏺ Try train of full train dataset and validate on best model LB results 
+* ⏺ Try to set different class weights on inference, and check if score is changed. If it is - we can fit our models to this class distribution
 * 🟦 Try KNN-imputing. Or don't use imputation at all?
 * 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost, KNN, LinReg and AutoGluon
 * 🟦 Add DNN, optimize it's architechture
@@ -36,7 +31,6 @@ Each version of model must be tagged with v.A.B.C.D system version: A - feature 
 * 🟦 Try regularization for LogReg
 * 🟦 Group by first and last letter of feature name, try to find dependensies between group name/mean/mode/median/min/max/std/nunique/count and target
 * 🟦 Add post-processing based on additional target data (look into Ideas)
-* ❌ Try DART optimization for XGBoost (too slow)
 
 
 ✅ - Done <br>
@@ -47,15 +41,6 @@ Each version of model must be tagged with v.A.B.C.D system version: A - feature 
 ⚠️ - Check it out <br>
 
 ## Ideas
-* 🟦 Yo Daug I've heard you like boosting, so let's predict with TabPFN/KNN and boost it's errors with boosting
-* ❌⏺ Denoising:
-      for f in features:
-         train_df[f] = np.floor(train_df[f]*100)/100 # if noise confuses model, this trick helps to delete it, doesn't work for LGBM
-      Slightly improves CV for LGBM with ratio 1000
-* ❌⏺ Log:
-      for f in features:
-         train_df[f] = np.sign(train_df[f]) * np.log1p(np.abs(train_df[f])) # doesn't work for GB, maybe will work for NNs
-* 🟦 Can try to deanonimise feachers with this: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5938178/
 * 🟦 Post-processing: DO NOT use code like test[test['class_0'] < 0.13] = 0 or test[test['class_0'] > 0.87] = 1. 
      One false classified object gives an error = -log(1e-15) = 34.53 => log-loss increases dramtically! So if use
      post-processing, use test[test['class_0'] < 0.13] = 0.1/0.01 or test[test['class_0'] > 0.87] = 0.9/0.99

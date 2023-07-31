@@ -22,14 +22,15 @@ Each version of model must be tagged with v.A.B.C.D system version: A - feature 
 * ✅ TabPFN, as all transformers, may be sensitive to uninformative features. And this dataset has a lot of them. Try to drop features one-by-one and check if TabPFN performance increases
 * ✅ Delete outliers using AdjustedScaler from adjdatatools (works good)
 * ✅ Try KNN-imputing. Or don't use imputation at all?
-* ⏺ Add post-processing based on additional target data (look into Ideas)
-* ⏺ Group by first and last letter of feature name, try to find dependencies between group name/mean/mode/median/min/max/std/nunique/count and target
+* ✅ Add post-processing based on additional target data (doesn't work)
+* ⏺ Try regularization for LogReg
 * ⏺ Try to set different class weights on inference, and check if score is changed. If it is - we can fit our models to this class distribution
 * ⏺ Try multi-label classification
-* 🟦 Try regularization for LogReg
+* ⏺ Very interesting FE, should try: https://www.kaggle.com/code/tatudoug/logistic-regression-baseline
 * 🟦 Try different number of folds for LogReg
 * 🟦 Try different number of models for LogReg
-* 🟦 Try train of full train dataset and validate on best model LB results 
+* 🟦 Try to train on full dataset with different n_estimators number
+* 🟦 Group by first and last letter of feature name, try to find dependencies between group name/mean/mode/median/min/max/std/nunique/count and target
 * 🟦 Ensemble TabPFN with LGBM, CatBoost, XGBoost, KNN, LinReg and AutoGluon
 * 🟦 Add DNN, optimize it's architechture
 * 🟦 Add TabNet

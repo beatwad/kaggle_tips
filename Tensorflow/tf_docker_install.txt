@@ -1,0 +1,26 @@
+1. Install GPU driver
+
+2. Install NVIDIA Container Toolkit using this guide.
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+
+Don't forget to configure the container runtime and restart the Docker daemon with these commands:
+
+sudo nvidia-ctk runtime configure --runtime=docker
+sudo systemctl restart docker
+
+3.Use this command to load TensorFlow Docker container with GPU and Jupyter support
+docker pull tensorflow/tensorflow:latest-gpu-jupyter
+
+Then go here and read additional information:
+https://www.tensorflow.org/install/docker
+
+Check if it's all okay with these comands:
+
+Must show driver info:
+sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
+
+Must calculate tensor operation using GPU:
+docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+
+Final command to run Jupyter server with TensorFlow GPU support:
+docker run --gpus all -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-jupyter

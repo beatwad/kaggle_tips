@@ -23,4 +23,6 @@ Must calculate tensor operation using GPU:
 docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
 
 Final command to run Jupyter server with TensorFlow GPU support:
-docker run --gpus all -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-jupyter
+docker run --gpus all -it -p 8888:8888 -v ${PWD}:/tf tensorflow/tensorflow:latest-gpu-jupyter
+
+docker run --rm -p 8888:8888 -v $(PWD):/home/Alex/Kaggle/DSS continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --notebook-dir=/opt/notebooks --allow-root --no-browser"

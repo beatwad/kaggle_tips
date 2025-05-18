@@ -1,6 +1,6 @@
 # Description 
 
-This repository contains templates and information that can be used in Kaggle competitions and real life.
+This repository contains templates, tips and information that can be used in Kaggle competitions and real life.
 These can be used for:
 - data obtaining
 - EDA

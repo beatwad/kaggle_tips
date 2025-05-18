@@ -10,5 +10,6 @@ Templates can be used for:
 - validation and testing
 - inference
 
-Also in `Models` directory there are descriptions for many modern models, including neural nets
-their architectures and use cases (CV, NLP, Metric Learning, Unsupervised Learning, etc.)
+Also in `Models` directory you can find **a lot** of information about modern models, especially neural nets, their architectures, train/inference methods and use cases (CV, NLP, Metric Learning, Unsupervised Learning, etc.)
+
+Fill free to use and share and ⭐ if you like it!
